@@ -1,6 +1,4 @@
-import json
 
-problems = [
 # ─── MACHINE LEARNING FUNDAMENTALS (20) ───────────────────────────────────────
 {
   "problem_id": "ioai_ml_001",
@@ -918,29 +916,7 @@ problems = [
 }
 ]
 
-with open("ioi_dataset.json", "w", encoding="utf-8") as f:
-    json.dump(problems, f, indent=2, ensure_ascii=False)
 
-with open("ioi_dataset.jsonl", "w", encoding="utf-8") as f:
-    for p in problems:
-        f.write(json.dumps(p, ensure_ascii=False) + "\n")
-
-print(f"Generated {len(problems)} problems")
-topics = {}
-for p in problems:
-    for t in p["topic"]:
-        topics[t] = topics.get(t, 0) + 1
-
-areas = {}
-for p in problems:
-    area = p["problem_id"].split("_")[1]
-    areas[area] = areas.get(area, 0) + 1
-
-print("\nProblems by area:")
-for area, count in sorted(areas.items()):
-    print(f"  {area}: {count}")
-
-diffs = {}
 for p in problems:
     diffs[p["difficulty"]] = diffs.get(p["difficulty"], 0) + 1
 print("\nBy difficulty:", diffs)
